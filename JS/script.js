@@ -26,6 +26,39 @@ const searchInput =
 
 const categoryFilter =
     document.getElementById("filterCategory");
+
+const budgetModal =
+    document.getElementById("budgetModal");
+
+const editBudgetBtn =
+    document.getElementById("editBudgetBtn");
+
+const closeBudgetModalBtn =
+    document.getElementById("closeBudgetModalBtn");
+
+const cancelBudgetBtn =
+    document.getElementById("cancelBudgetBtn");
+
+const budgetForm =
+    document.getElementById("budgetForm");
+
+const budgetInput =
+    document.getElementById("budgetInput");
+
+const monthlyBudgetDisplay =
+    document.getElementById("monthlyBudgetDisplay");
+
+const budgetSpent =
+    document.getElementById("budgetSpent");
+
+const budgetRemaining =
+    document.getElementById("budgetRemaining");
+
+const budgetPercentage =
+    document.getElementById("budgetPercentage");
+
+const largeBudgetProgress =
+    document.getElementById("largeBudgetProgress");    
   
   
 // =========================
@@ -63,7 +96,9 @@ const budgetElement = document.querySelector(
 // =========================
 
 const monthlyIncome = 20000;
-const monthlyBudget = 11000;
+
+let monthlyBudget =
+    Number(localStorage.getItem("spendwiseBudget")) || 11000;
 
 let expenses = JSON.parse(
     localStorage.getItem("spendwiseExpenses")
@@ -605,11 +640,7 @@ categoryFilter.addEventListener("change", () => {
     renderTransactions();
 });
 
-setDefaultDate();
 
-updateDashboard();
-
-renderTransactions();
 // =========================
 // DELETE EXPENSE
 // =========================
@@ -664,3 +695,162 @@ transactionsList.addEventListener("click", (event) => {
     renderTransactions();
 
 });
+// =========================
+// BUDGET SYSTEM
+// =========================
+
+function openBudgetModal() {
+
+    budgetInput.value = monthlyBudget;
+
+    budgetModal.classList.add("active");
+
+    budgetInput.focus();
+
+}
+
+
+function closeBudgetModal() {
+
+    budgetModal.classList.remove("active");
+
+    budgetForm.reset();
+
+}
+
+
+editBudgetBtn.addEventListener(
+    "click",
+    openBudgetModal
+);
+
+
+closeBudgetModalBtn.addEventListener(
+    "click",
+    closeBudgetModal
+);
+
+
+cancelBudgetBtn.addEventListener(
+    "click",
+    closeBudgetModal
+);
+
+
+budgetModal.addEventListener(
+    "click",
+    (event) => {
+
+        if (event.target === budgetModal) {
+            closeBudgetModal();
+        }
+
+    }
+);
+
+
+budgetForm.addEventListener(
+    "submit",
+    (event) => {
+
+        event.preventDefault();
+
+
+        const newBudget =
+            Number(budgetInput.value);
+
+
+        if (!newBudget || newBudget <= 0) {
+
+            alert(
+                "Please enter a valid budget."
+            );
+
+            return;
+        }
+
+
+        monthlyBudget = newBudget;
+
+
+        localStorage.setItem(
+            "spendwiseBudget",
+            monthlyBudget
+        );
+
+
+        updateDashboard();
+
+        updateBudgetSection();
+
+        closeBudgetModal();
+
+    }
+);
+function updateBudgetSection() {
+
+    const totalExpenses =
+        expenses.reduce(
+            (total, expense) =>
+                total + expense.amount,
+            0
+        );
+
+
+    const remaining =
+        monthlyBudget - totalExpenses;
+
+
+    const percentage =
+        Math.min(
+            (totalExpenses / monthlyBudget) * 100,
+            100
+        );
+
+
+    monthlyBudgetDisplay.textContent =
+        formatCurrency(monthlyBudget);
+
+
+    budgetSpent.textContent =
+        formatCurrency(totalExpenses);
+
+
+    budgetRemaining.textContent =
+        formatCurrency(
+            Math.max(remaining, 0)
+        );
+
+
+    budgetPercentage.textContent =
+        `${Math.round(percentage)}%`;
+
+
+    largeBudgetProgress.style.width =
+        `${percentage}%`;
+
+
+    if (percentage >= 100) {
+
+        largeBudgetProgress.classList.add(
+            "budget-danger"
+        );
+
+    }
+
+    else {
+
+        largeBudgetProgress.classList.remove(
+            "budget-danger"
+        );
+
+    }
+
+}
+setDefaultDate();
+
+updateDashboard();
+
+updateBudgetSection();
+
+renderTransactions();

@@ -468,10 +468,114 @@
 
             </div>
 
-        </main>
+       
+        <!-- =========================
+     BUDGET SECTION
+========================= -->
+
+<section class="budget-section" id="budget">
+
+    <div class="budget-page-header">
+
+        <div>
+            <p class="eyebrow">BUDGET</p>
+
+            <h2>Manage your monthly budget</h2>
+
+            <p>
+                Set a spending limit and keep your expenses under control.
+            </p>
+        </div>
+
+        <button
+            class="primary-button"
+            id="editBudgetBtn"
+        >
+            Edit budget
+        </button>
 
     </div>
 
+
+    <div class="budget-overview">
+
+        <div class="budget-main-card">
+
+            <div class="budget-card-header">
+
+                <div>
+                    <span>Monthly budget</span>
+
+                    <h3 id="monthlyBudgetDisplay">
+                        ₹11,000
+                    </h3>
+                </div>
+
+                <div class="budget-circle">
+                    <span id="budgetPercentage">
+                        0%
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="large-progress">
+
+                <div
+                    class="large-progress-fill"
+                    id="largeBudgetProgress"
+                ></div>
+
+            </div>
+
+
+            <div class="budget-stats">
+
+                <div>
+                    <span>Spent</span>
+
+                    <strong id="budgetSpent">
+                        ₹0
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>Remaining</span>
+
+                    <strong id="budgetRemaining">
+                        ₹11,000
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="budget-tip-card">
+
+            <div class="tip-icon">
+                ✦
+            </div>
+
+            <h3>Spend mindfully</h3>
+
+            <p>
+                Keeping a small buffer in your monthly budget
+                can help you handle unexpected expenses.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+ 
+
+    </div>
+</main>
 
     <!-- ================= ADD EXPENSE MODAL ================= -->
 
@@ -606,6 +710,88 @@
         </div>
 
     </div>
+    <!-- =========================
+     BUDGET MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="budgetModal"
+>
+
+    <div class="expense-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <p class="eyebrow">
+                    MONTHLY PLAN
+                </p>
+
+                <h2>
+                    Set your budget
+                </h2>
+            </div>
+
+            <button
+                class="modal-close"
+                id="closeBudgetModalBtn"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="budgetForm">
+
+            <div class="form-group">
+
+                <label for="budgetInput">
+                    Monthly budget
+                </label>
+
+                <div class="large-amount-input">
+
+                    <span>₹</span>
+
+                    <input
+                        type="number"
+                        id="budgetInput"
+                        min="1"
+                        placeholder="11000"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    id="cancelBudgetBtn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Save budget
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
 
 
     <script src="js/script.js"></script>

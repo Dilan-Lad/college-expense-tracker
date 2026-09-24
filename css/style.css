@@ -1416,3 +1416,234 @@ a {
     }
 
 }
+/* =========================
+   BUDGET SECTION
+========================= */
+
+.budget-section {
+    margin-top: 35px;
+}
+
+.budget-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 18px;
+}
+
+.budget-page-header h2 {
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+
+.budget-page-header p:not(.eyebrow) {
+    margin-top: 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+.budget-overview {
+    display: grid;
+
+    grid-template-columns: 1.5fr 0.7fr;
+
+    gap: 18px;
+}
+
+.budget-main-card,
+.budget-tip-card {
+    padding: 25px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow);
+}
+
+.budget-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.budget-card-header span {
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+.budget-card-header h3 {
+    margin-top: 7px;
+
+    font-size: 28px;
+
+    letter-spacing: -0.8px;
+}
+
+
+/* BUDGET CIRCLE */
+
+.budget-circle {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--primary-soft);
+
+    color: var(--primary);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* LARGE PROGRESS */
+
+.large-progress {
+    width: 100%;
+    height: 9px;
+
+    overflow: hidden;
+
+    margin-top: 28px;
+
+    border-radius: 100px;
+
+    background: #e9ece9;
+}
+
+.large-progress-fill {
+    width: 0%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--primary);
+
+    transition: width 0.4s ease;
+}
+
+
+/* BUDGET STATS */
+
+.budget-stats {
+    display: flex;
+
+    gap: 70px;
+
+    margin-top: 20px;
+}
+
+.budget-stats span {
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 10px;
+}
+
+.budget-stats strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 13px;
+}
+
+
+/* TIP */
+
+.budget-tip-card {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.tip-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    background: var(--primary-soft);
+
+    color: var(--primary);
+
+    font-size: 16px;
+}
+
+.budget-tip-card h3 {
+    font-size: 14px;
+}
+
+.budget-tip-card p {
+    max-width: 300px;
+
+    margin-top: 8px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* BUDGET WARNING */
+
+.budget-warning {
+    background: #f8eee5;
+
+    color: #8b633e;
+}
+
+.budget-danger {
+    background: #f7eaea;
+
+    color: var(--danger);
+}
+
+
+@media (max-width: 760px) {
+
+    .budget-page-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .budget-page-header .primary-button {
+        width: 100%;
+    }
+
+    .budget-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-stats {
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+}
