@@ -21,6 +21,25 @@ const quickAddBtn = document.getElementById("quickAddBtn");
 
 const transactionsList = document.querySelector(".transactions-list");
 
+const searchInput =
+    document.getElementById("searchExpenses");
+
+const categoryFilter =
+    document.getElementById("filterCategory");
+  
+  
+// =========================
+// SEARCH & FILTER
+// =========================
+
+searchInput.addEventListener("input", () => {
+    renderTransactions();
+});
+
+categoryFilter.addEventListener("change", () => {
+    renderTransactions();
+});
+
 
 // =========================
 // DASHBOARD VALUES
@@ -360,15 +379,51 @@ function renderTransactions() {
     transactionsList.innerHTML = "";
 
 
+    // Get search text
+    const searchTerm =
+        searchInput.value.toLowerCase().trim();
+
+
+    // Get selected category
+    const selectedCategory =
+        categoryFilter.value;
+
+
+    // Filter expenses
+    const filteredExpenses =
+        expenses.filter((expense) => {
+
+            const matchesSearch =
+                expense.note
+                    .toLowerCase()
+                    .includes(searchTerm) ||
+
+                expense.category
+                    .toLowerCase()
+                    .includes(searchTerm);
+
+
+            const matchesCategory =
+                selectedCategory === "all" ||
+                expense.category === selectedCategory;
+
+
+            return matchesSearch && matchesCategory;
+
+        });
+
+
+    // Show maximum 10 transactions
     const recentExpenses =
-        expenses.slice(0, 5);
+        filteredExpenses.slice(0, 10);
 
 
+    // No results
     if (recentExpenses.length === 0) {
 
         transactionsList.innerHTML = `
             <div class="empty-state">
-                No expenses recorded yet.
+                No expenses found.
             </div>
         `;
 
@@ -376,6 +431,7 @@ function renderTransactions() {
     }
 
 
+    // Create transaction cards
     recentExpenses.forEach((expense) => {
 
         const transaction =
@@ -416,9 +472,31 @@ function renderTransactions() {
             </div>
 
 
-            <strong class="expense-amount">
-                − ${formatCurrency(expense.amount)}
-            </strong>
+            <div class="transaction-right">
+
+                <strong class="expense-amount">
+                    − ${formatCurrency(expense.amount)}
+                </strong>
+
+                <div class="transaction-actions">
+
+                    <button
+                        class="transaction-action edit-btn"
+                        data-id="${expense.id}"
+                    >
+                        Edit
+                    </button>
+
+                    <button
+                        class="transaction-action delete-btn"
+                        data-id="${expense.id}"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+            </div>
 
         `;
 
@@ -430,7 +508,6 @@ function renderTransactions() {
     });
 
 }
-
 
 // =========================
 // FORMAT CURRENCY
@@ -519,9 +596,71 @@ function escapeHTML(value) {
 // =========================
 // INITIALIZE
 // =========================
+searchInput.addEventListener("input", () => {
+    renderTransactions();
+});
+
+
+categoryFilter.addEventListener("change", () => {
+    renderTransactions();
+});
 
 setDefaultDate();
 
 updateDashboard();
 
 renderTransactions();
+// =========================
+// DELETE EXPENSE
+// =========================
+
+transactionsList.addEventListener("click", (event) => {
+
+    const deleteButton =
+        event.target.closest(".delete-btn");
+
+
+    if (!deleteButton) {
+        return;
+    }
+
+
+    const expenseId =
+        Number(deleteButton.dataset.id);
+
+
+    const expense =
+        expenses.find(
+            (item) => item.id === expenseId
+        );
+
+
+    if (!expense) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            `Delete "${expense.note}" expense of ${formatCurrency(expense.amount)}?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    expenses =
+        expenses.filter(
+            (item) => item.id !== expenseId
+        );
+
+
+    saveExpenses();
+
+    updateDashboard();
+
+    renderTransactions();
+
+});
