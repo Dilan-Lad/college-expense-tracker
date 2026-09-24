@@ -3,13 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Expense Tracker</title>
+
+    <title>SpendWise — College Expense Tracker</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <h1>College Expense Tracker</h1>
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">S</div>
+
+                <div>
+                    <h2>SpendWise</h2>
+                    <span>Student finance</span>
+                </div>
+            </div>
+
+
+            <nav class="navigation">
+
+                <p class="nav-title">MENU</p>
+
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">⌂</span>
+                    <span>Overview</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">↔</span>
+                    <span>Expenses</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">◷</span>
+                    <span>Budget</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">◒</span>
+                    <span>Analytics</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+                <div class="profile-mini">
+
+                    <div class="profile-avatar">
+                        DL
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Student</strong>
+                        <span>My account</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="main-content">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="mobile-brand">
+                    <div class="brand-icon">S</div>
+                    <strong>SpendWise</strong>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button class="icon-button" aria-label="Notifications">
+                        ♧
+                    </button>
+
+                    <div class="top-profile">
+                        <div class="profile-avatar">
+                            DL
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+
+            <div class="content">
+
+
+                <!-- WELCOME -->
+
+                <section class="welcome-section">
+
+                    <div>
+                        <p class="eyebrow">OVERVIEW</p>
+
+                        <h1>
+                            Good morning, Student.
+                        </h1>
+
+                        <p class="welcome-text">
+                            Here's a simple look at your money this month.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" id="addExpenseBtn">
+                        <span>+</span>
+                        Add expense
+                    </button>
+
+                </section>
+
+
+                <!-- SUMMARY CARDS -->
+
+                <section class="summary-grid">
+
+                    <div class="summary-card balance-card">
+
+                        <div class="card-top">
+                            <span class="card-label">
+                                Available balance
+                            </span>
+
+                            <span class="card-symbol">₹</span>
+                        </div>
+
+                        <h2>₹12,500</h2>
+
+                        <p class="card-positive">
+                            ↑ 8.4% from last month
+                        </p>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <div class="card-top">
+                            <span class="card-label">
+                                Total expenses
+                            </span>
+
+                            <span class="card-symbol expense-symbol">−</span>
+                        </div>
+
+                        <h2>₹7,500</h2>
+
+                        <p class="card-muted">
+                            This month
+                        </p>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <div class="card-top">
+                            <span class="card-label">
+                                Monthly budget
+                            </span>
+
+                            <span class="card-symbol budget-symbol">◷</span>
+                        </div>
+
+                        <h2>₹11,000</h2>
+
+                        <div class="budget-progress">
+
+                            <div class="progress-track">
+                                <div class="progress-fill"></div>
+                            </div>
+
+                            <span>68%</span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- MAIN DASHBOARD GRID -->
+
+                <section class="dashboard-grid">
+
+
+                    <!-- SPENDING OVERVIEW -->
+
+                    <div class="panel spending-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Spending overview</h2>
+
+                                <p>
+                                    Your spending activity this month
+                                </p>
+                            </div>
+
+                            <select class="period-select">
+                                <option>This month</option>
+                                <option>Last month</option>
+                                <option>Last 3 months</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="chart-area">
+
+                            <div class="chart-placeholder">
+
+                                <div class="chart-line"></div>
+
+                                <div class="chart-message">
+                                    <span>Chart</span>
+                                    <small>
+                                        Your spending chart will appear here
+                                    </small>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-labels">
+                                <span>Week 1</span>
+                                <span>Week 2</span>
+                                <span>Week 3</span>
+                                <span>Week 4</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUICK ADD -->
+
+                    <div class="panel quick-add-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Quick add</h2>
+
+                                <p>
+                                    Record an expense in seconds
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <form class="quick-form">
+
+                            <label for="quickAmount">
+                                Amount
+                            </label>
+
+                            <div class="amount-input">
+
+                                <span>₹</span>
+
+                                <input
+                                    type="number"
+                                    id="quickAmount"
+                                    placeholder="0.00"
+                                >
+
+                            </div>
+
+
+                            <label for="quickCategory">
+                                Category
+                            </label>
+
+                            <select id="quickCategory">
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option>Food</option>
+                                <option>Travel</option>
+                                <option>College</option>
+                                <option>Hostel</option>
+                                <option>Shopping</option>
+                                <option>Entertainment</option>
+                                <option>Other</option>
+
+                            </select>
+
+
+                            <button
+                                type="button"
+                                class="secondary-button"
+                                id="quickAddBtn"
+                            >
+                                Add expense
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RECENT TRANSACTIONS -->
+
+                <section class="panel transactions-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Recent transactions</h2>
+
+                            <p>
+                                Your latest recorded expenses
+                            </p>
+                        </div>
+
+                        <a href="#" class="view-link">
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <div class="transactions-list">
+
+
+                        <!-- TRANSACTION -->
+
+                        <div class="transaction">
+
+                            <div class="transaction-left">
+
+                                <div class="transaction-icon food">
+                                    🍔
+                                </div>
+
+                                <div>
+                                    <strong>Lunch</strong>
+                                    <span>Food · Today</span>
+                                </div>
+
+                            </div>
+
+                            <strong class="expense-amount">
+                                − ₹120
+                            </strong>
+
+                        </div>
+
+
+                        <!-- TRANSACTION -->
+
+                        <div class="transaction">
+
+                            <div class="transaction-left">
+
+                                <div class="transaction-icon travel">
+                                    🚌
+                                </div>
+
+                                <div>
+                                    <strong>Bus pass</strong>
+                                    <span>Travel · Today</span>
+                                </div>
+
+                            </div>
+
+                            <strong class="expense-amount">
+                                − ₹80
+                            </strong>
+
+                        </div>
+
+
+                        <!-- TRANSACTION -->
+
+                        <div class="transaction">
+
+                            <div class="transaction-left">
+
+                                <div class="transaction-icon college">
+                                    📚
+                                </div>
+
+                                <div>
+                                    <strong>College project</strong>
+                                    <span>College · Yesterday</span>
+                                </div>
+
+                            </div>
+
+                            <strong class="expense-amount">
+                                − ₹500
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= ADD EXPENSE MODAL ================= -->
+
+    <div class="modal-overlay" id="expenseModal">
+
+        <div class="expense-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <p class="eyebrow">NEW TRANSACTION</p>
+                    <h2>Add expense</h2>
+                </div>
+
+                <button
+                    class="modal-close"
+                    id="closeModalBtn"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form class="expense-form">
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        Amount
+                    </label>
+
+                    <div class="large-amount-input">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="amount"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="">
+                            Choose a category
+                        </option>
+
+                        <option>Food</option>
+                        <option>Travel</option>
+                        <option>College</option>
+                        <option>Hostel</option>
+                        <option>Shopping</option>
+                        <option>Entertainment</option>
+                        <option>Technology</option>
+                        <option>Personal</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="date">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="note">
+                            Note
+                        </label>
+
+                        <input
+                            type="text"
+                            id="note"
+                            placeholder="Optional"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelModalBtn"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Add expense
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
 
     <script src="js/script.js"></script>
+
 </body>
 </html>
