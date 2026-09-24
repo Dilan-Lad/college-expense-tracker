@@ -1238,3 +1238,16 @@ a {
     }
 
 }
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: var(--text-light);
+
+    font-size: 11px;
+}
